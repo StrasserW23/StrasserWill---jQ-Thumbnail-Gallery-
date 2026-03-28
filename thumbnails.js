@@ -5,39 +5,30 @@ $(document).ready(function() {
   // When any thumbnail is clicked, run the code below.
   $(".thumb").click(function() {
 
-    // When a thumbnail is clicked, "this" refers to the thumbnail that was clicked.
-
     // Get the image file path from the clicked thumbnail.
-    // Since we are using the same image for both the thumbnail and the featured image,
-    // we can just read the src attribute.
     var fullImage = $(this).attr("src");
 
-    // Get the project title stored in the clicked thumbnail's data-title attribute.
-    var projectTitle = 
+    // Get the project title
+    var projectTitle = $(this).attr("data-title");
 
-    // Get the project description stored in the clicked thumbnail's data-description attribute.
-    var projectDescription = 
+    // FIXED: correct attribute name
+    var projectDescription = $(this).attr("data-description");
 
-    // Remove the active class from every thumbnail.
-    // This clears the old selection.
-    
+    // Remove active class from all thumbnails
+    $(".thumb").removeClass("active");
 
-    // Add the active class to the thumbnail that was clicked.
-    // This highlights the current thumbnail.
-    
+    // Add active class to clicked thumbnail
+    $(this).addClass("active");
 
-    // Fade out the featured image.
-    // After it fades out, change the image source.
-    // Then fade the image back in.
+    // Fade out → change image → fade in
     $("#featured-image").fadeOut(200, function() {
-      
+      // FIXED: "scr" → "src"
+      $(this).attr("src", fullImage).fadeIn(200);
     });
 
-    // Update the text inside the featured project title.
-    
-
-    // Update the text inside the featured project description.
-    
+    // Update title and description
+    $("#project-title").text(projectTitle);
+    $("#project-description").text(projectDescription);
 
   });
 
